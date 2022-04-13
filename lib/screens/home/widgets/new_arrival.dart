@@ -12,22 +12,16 @@ class NewArrival extends StatelessWidget {
       child: Column(
         children: [
           CategoriesList("New Arrival"),
-          JewelriesItem(
-            Jewelries(
-                "Rolex",
-                "41mm Rolex 20201 Model Date Just Jubilee Band Full Diamonds",
-                "\$25000.00",
-                "assets/images/watch.jpg",
-                ["assets/images/watch.jpg", "assets/images/watch2.jpg"]),
+          Container(
+            height: 350,
+            child: ListView.separated(
+                padding: EdgeInsets.symmetric(horizontal: 25),
+                scrollDirection: Axis.horizontal,
+                itemBuilder: ((context, index) =>
+                    JewelriesItem(jewelryList[index])),
+                separatorBuilder: (_, index) => SizedBox(width: 10),
+                itemCount: jewelryList.length),
           ),
-          // Container(
-          //   child: ListView.separated(
-          //       scrollDirection: Axis.horizontal,
-          //       itemBuilder: ((context, index) =>
-          //           JewelriesItem(jewelryList[index])),
-          //       separatorBuilder: (_, index) => SizedBox(width: 10),
-          //       itemCount: jewelryList.length),
-          // ),
         ],
       ),
     );

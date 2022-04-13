@@ -1,5 +1,4 @@
-import 'package:firstapp/screens/home/widgets/categories_list.dart';
-import 'package:firstapp/screens/home/widgets/jewelries_item.dart';
+import 'package:firstapp/screens/home/widgets/best_seller.dart';
 import 'package:firstapp/screens/home/widgets/custom_app_bar.dart';
 import 'package:firstapp/screens/home/widgets/new_arrival.dart';
 import 'package:firstapp/screens/home/widgets/search_input.dart';
@@ -15,7 +14,12 @@ class HomePage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
-          children: [CustomAppBar(), SearchInput(), NewArrival()],
+          children: [
+            CustomAppBar(),
+            SearchInput(),
+            NewArrival(),
+            BestSeller(),
+          ],
         ),
       ),
     );

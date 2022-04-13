@@ -14,8 +14,26 @@ class Jewelries {
           "Rolex",
           "41mm Rolex 20201 Model Date Just Jubilee Band Full Diamonds",
           "\$25000.00",
-          "assets/images/watch.jpg",
-          ["assets/images/watch.jpg", "assets/images/watch2.jpg"]),
+          "assets/images/watch_front_1.jpg", [
+        "assets/images/watch_front_1.jpg",
+        "assets/images/watch_back_1.jpg"
+      ]),
+      Jewelries(
+          "Rolex",
+          "41mm Rolex 20201 Model Date Just Jubilee Band Full Diamonds",
+          "\$25000.00",
+          "assets/images/watch_front_2.jpg", [
+        "assets/images/watch_front_2.jpg",
+        "assets/images/watch_back_2.jpg"
+      ]),
+      Jewelries(
+          "Rolex",
+          "41mm Rolex 20201 Model Date Just Jubilee Band Full Diamonds",
+          "\$25000.00",
+          "assets/images/watch_front_3.jpg", [
+        "assets/images/watch_front_3.jpg",
+        "assets/images/watch_back_3.jpg"
+      ]),
       Jewelries(
           "Roe",
           "1 OZ LIBERTY COIN WITH DIAMOND FRAME",
