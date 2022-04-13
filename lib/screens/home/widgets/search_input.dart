@@ -1,7 +1,16 @@
 import 'package:flutter/material.dart';
 
 class SearchInput extends StatelessWidget {
-  final tagsList = ["Diamond", "Gold", "Earrings", "Watch", "Necklace"];
+  final tagsList = [
+    "Diamond",
+    "Gold",
+    "Earrings",
+    "Watch",
+    "Necklace",
+    "Ring",
+    "Pendat",
+    "Bracelet"
+  ];
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -41,7 +50,24 @@ class SearchInput extends StatelessWidget {
               )
             ],
           ),
-          Row(),
+          Wrap(
+            //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: tagsList
+                .map(
+                  (tag) => Container(
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: Theme.of(context).accentColor),
+                    margin: EdgeInsets.only(top: 10, right: 10),
+                    padding: EdgeInsets.all(10),
+                    child: Text(
+                      tag,
+                      style: TextStyle(color: Colors.grey[700]),
+                    ),
+                  ),
+                )
+                .toList(),
+          ),
         ],
       ),
     );
