@@ -4,7 +4,7 @@ import 'package:firstapp/screens/home/widgets/jewelries_item.dart';
 import 'package:flutter/material.dart';
 
 class NewArrival extends StatelessWidget {
-  final jewelryList = Jewelries.generateClothes();
+  final jewelryList = Jewelries.generateJewelries();
   @override
   Widget build(BuildContext context) {
     print(jewelryList);

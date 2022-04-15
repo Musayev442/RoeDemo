@@ -8,7 +8,7 @@ class Jewelries {
   Jewelries(
       this.title, this.subtitle, this.price, this.imageURL, this.detailUrl);
 
-  static List<Jewelries> generateClothes() {
+  static List<Jewelries> generateJewelries() {
     return [
       Jewelries(
           "Rolex",
