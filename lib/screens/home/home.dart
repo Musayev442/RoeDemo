@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import '../../models/jewelries.dart';
 
 class HomePage extends StatelessWidget {
+  final bottomlist = ["home", "menu", "heart", "user"];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,6 +22,22 @@ class HomePage extends StatelessWidget {
             BestSeller(),
           ],
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
+        type: BottomNavigationBarType.fixed,
+        items: bottomlist
+            .map(
+              (item) => BottomNavigationBarItem(
+                label: item,
+                icon: Image.asset(
+                  'assets/icons/$item.png',
+                  width: 25,
+                ),
+              ),
+            )
+            .toList(),
       ),
     );
   }
