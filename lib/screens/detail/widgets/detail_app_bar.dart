@@ -23,7 +23,7 @@ class _DetailAppBarState extends State<DetailAppBar> {
             child: CarouselSlider(
               carouselController: _controller,
               options: CarouselOptions(
-                  height: 400,
+                  height: 500,
                   viewportFraction: 1,
                   onPageChanged: (index, reason) {
                     setState(() {
@@ -51,10 +51,70 @@ class _DetailAppBarState extends State<DetailAppBar> {
             ),
           ),
           Positioned(
+            bottom: 30,
+            left: 180,
             child: Row(
-              children: [Text("data")],
+              children: widget.jewelries.detailUrl
+                  .asMap()
+                  .entries
+                  .map(
+                    (entry) => GestureDetector(
+                      onTap: () => _controller.animateToPage(entry.key),
+                      child: Container(
+                        margin: EdgeInsets.symmetric(horizontal: 2),
+                        width: 12,
+                        height: 12,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Theme.of(context).primaryColor.withOpacity(
+                              _curentPage == entry.key ? 0.9 : 0.4),
+                        ),
+                      ),
+                    ),
+                  )
+                  .toList(),
             ),
           ),
+          Container(
+            padding: EdgeInsets.only(top: 25, left: 25, right: 25),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: Container(
+                    padding: EdgeInsets.all(8),
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Theme.of(context).primaryColor.withOpacity(0.8),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 8.0),
+                      child: Icon(
+                        Icons.arrow_back_ios,
+                        color: Colors.white,
+                        size: 22,
+                      ),
+                    ),
+                  ),
+                ),
+                Container(
+                  padding: EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Theme.of(context).primaryColor.withOpacity(0.8),
+                  ),
+                  child: Icon(
+                    Icons.more_horiz,
+                    color: Colors.white,
+                    size: 22,
+                  ),
+                )
+              ],
+            ),
+          )
         ],
       ),
     );

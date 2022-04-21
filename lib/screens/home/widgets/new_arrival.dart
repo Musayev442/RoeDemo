@@ -7,7 +7,6 @@ class NewArrival extends StatelessWidget {
   final jewelryList = Jewelries.generateJewelries();
   @override
   Widget build(BuildContext context) {
-    print(jewelryList);
     return Container(
       child: Column(
         children: [

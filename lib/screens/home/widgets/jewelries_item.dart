@@ -47,7 +47,15 @@ class JewelriesItem extends StatelessWidget {
                     child: Container(
                       decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          color: Colors.grey.withOpacity(0.4)),
+                          color: Colors.white,
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.3),
+                              spreadRadius: 0.1,
+                              blurRadius: 1,
+                              offset: Offset(0, 1),
+                            )
+                          ]),
                       padding: EdgeInsets.all(8),
                       child: Icon(
                         Icons.favorite,

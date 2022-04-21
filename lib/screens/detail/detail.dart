@@ -1,5 +1,7 @@
 import 'package:firstapp/models/jewelries.dart';
+import 'package:firstapp/screens/detail/widgets/add_cart.dart';
 import 'package:firstapp/screens/detail/widgets/detail_app_bar.dart';
+import 'package:firstapp/screens/detail/widgets/jewelries_info.dart';
 import 'package:flutter/material.dart';
 
 class DetailPage extends StatelessWidget {
@@ -12,7 +14,11 @@ class DetailPage extends StatelessWidget {
         body: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: [DetailAppBar(jewelries)],
+            children: [
+              DetailAppBar(jewelries),
+              JewelriesInfo(jewelries),
+              AddCart(jewelries),
+            ],
           ),
         ),
       ),
