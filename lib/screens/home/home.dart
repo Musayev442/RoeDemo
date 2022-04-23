@@ -1,32 +1,47 @@
-import 'package:firstapp/screens/home/widgets/best_seller.dart';
-import 'package:firstapp/screens/home/widgets/custom_app_bar.dart';
-import 'package:firstapp/screens/home/widgets/new_arrival.dart';
-import 'package:firstapp/screens/home/widgets/search_input.dart';
+// ignore_for_file: deprecated_member_use
+
+import 'package:firstapp/models/jewelries.dart';
+import 'package:firstapp/screens/profile/profile.dart';
+import 'package:firstapp/screens/favorites/favorite_product.dart';
+import 'package:firstapp/screens/home/home_page.dart';
 import 'package:flutter/material.dart';
 
-import '../../models/jewelries.dart';
+import '../Categories/categories.dart';
 
-class HomePage extends StatelessWidget {
+class Home extends StatefulWidget {
+  @override
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  final jewelryList = Jewelries.generateJewelries();
   final bottomlist = ["home", "menu", "heart", "user"];
+  final menu = [HomePage(), Categories(), FavoriteProducts(), Profile()];
+  int currentIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).backgroundColor,
-      body: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            CustomAppBar(),
-            SearchInput(),
-            NewArrival(),
-            BestSeller(),
-          ],
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).primaryColor,
+        leading: Icon(
+          Icons.list,
+          size: 30,
         ),
+      ),
+      backgroundColor: Theme.of(context).backgroundColor,
+      body: IndexedStack(
+        index: currentIndex,
+        children: menu,
       ),
       bottomNavigationBar: BottomNavigationBar(
         showSelectedLabels: false,
         showUnselectedLabels: false,
         type: BottomNavigationBarType.fixed,
+        currentIndex: currentIndex,
+        onTap: (index) => setState(() {
+          currentIndex = index;
+        }),
         items: bottomlist
             .map(
               (item) => BottomNavigationBarItem(
