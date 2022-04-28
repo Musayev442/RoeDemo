@@ -9,12 +9,7 @@ class Items extends StatelessWidget {
   Widget build(BuildContext context) {
     for (var x in jewelryList) {
       for (var i in x.categories) {
-        if (jewelryList.contains(category)) {
-          return Scaffold(
-            appBar: AppBar(title: Text(category)),
-            body: ListView(children: []),
-          );
-        }
+        if (jewelryList.contains(category)) {}
       }
     }
     return Scaffold(

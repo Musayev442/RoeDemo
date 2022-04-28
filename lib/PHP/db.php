@@ -12,6 +12,7 @@
           $error=$e->getMessage();
           echo $error;
      }
+     echo "<img src=\"".$row["guid"]."\"><br>";
 // // ** MySQL settings - You can get this info from your web host ** //
 // /** The name of the database for WordPress */
 // define( 'DB_NAME', 'roejewel_dbjo' );
