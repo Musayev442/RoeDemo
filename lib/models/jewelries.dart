@@ -1,3 +1,14 @@
+//https://roejewelry.com/flutter_connection/get.php
+
+import 'dart:convert' as convert;
+import 'package:http/http.dart' as http;
+
+Future getData() async {
+  var url = 'https://roejewelry.com/flutter_connection/get.php';
+  http.Response response = await http
+      .get(Uri.https('https://roejewelry.com', 'flutter_connection/get.php'));
+}
+
 class Jewelries {
   String title;
   String subtitle;
