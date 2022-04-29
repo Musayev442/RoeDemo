@@ -22,26 +22,20 @@ class _HomeState extends State<Home> {
   final menu = [HomePage(), Categories(), FavoriteProducts(), Profile()];
   int currentIndex = 0;
 
-  Data data = new Data();
+  late Future<Data> futureData;
 
-  Future getData() async {
+  Future<Data> getData() async {
     var request = http.Request(
         'GET', Uri.parse('https://roejewelry.com/flutter_connection/get.php'));
 
-    http.StreamedResponse response = await request.send();
-
-    if (response.statusCode == 200) {
-      print(await response.stream.bytesToString());
-    } else {
-      print(response.reasonPhrase);
-    }
+    return Data.fromJson(convert.jsonDecode(request.body));
   }
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    getData().then((res) {});
+    futureData = getData();
   }
 
   @override
