@@ -1,17 +1,6 @@
 //https://roejewelry.com/flutter_connection/get.php
 
-import 'dart:convert' as convert;
-import 'package:http/http.dart' as http;
-
 class Jewelries {
-  Future getData() async {
-    var url = 'https://roejewelry.com/flutter_connection/get.php';
-    http.Response response = await http
-        .get(Uri.https('https://roejewelry.com', 'flutter_connection/get.php'));
-    var jsonData = convert.jsonDecode(response.body);
-    print(jsonData);
-  }
-
   String title;
   String subtitle;
   String price;

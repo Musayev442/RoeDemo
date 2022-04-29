@@ -6,7 +6,10 @@ import 'package:firstapp/screens/favorites/favorite_product.dart';
 import 'package:firstapp/screens/home/home_page.dart';
 import 'package:flutter/material.dart';
 
+import '../../models/data.dart';
 import '../Categories/categories.dart';
+import 'dart:convert' as convert;
+import 'package:http/http.dart' as http;
 
 class Home extends StatefulWidget {
   @override
@@ -18,6 +21,28 @@ class _HomeState extends State<Home> {
   final bottomlist = ["home", "menu", "heart", "user"];
   final menu = [HomePage(), Categories(), FavoriteProducts(), Profile()];
   int currentIndex = 0;
+
+  Data data = new Data();
+
+  Future getData() async {
+    var request = http.Request(
+        'GET', Uri.parse('https://roejewelry.com/flutter_connection/get.php'));
+
+    http.StreamedResponse response = await request.send();
+
+    if (response.statusCode == 200) {
+      print(await response.stream.bytesToString());
+    } else {
+      print(response.reasonPhrase);
+    }
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getData().then((res) {});
+  }
 
   @override
   Widget build(BuildContext context) {
