@@ -1,18 +1,40 @@
 <?php 
-     $dns="mysql:host=localhost;dbname=roejewel_dbjo;";
-     $username="roejewel_aqewt";
-     $password="roejewelry";
+     function PDOConection()
+    {
+        $username = "roejewel_aqewt";
+        $password = "h#6zr(LJzp9K";
 
-     try
-     {
-          $db=new PDO($dns,$username,$password);
-          //echo 'conected';
-     }catch(PDOException $e)
-     {
-          $error=$e->getMessage();
-          echo $error;
-     }
-     echo "<img src=\"".$row["guid"]."\"><br>";
+        $dns = 'mysql:host=localhost;dbname=roejewel_dbjo';
+
+        try{
+            $con=new PDO($dns,$username,$password); 
+        }catch(PDOException $e)
+        {
+            echo "error";
+        }
+    }
+    
+    function DBConection()
+    {
+        $username = "roejewel_aqewt";
+        $password = "h#6zr(LJzp9K";
+        $dbname ='roejewel_dbjo';
+        $servername='localhost';
+        $conn = new mysqli($servername, $username, $password, $dbname);
+
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+    }
+    DBConection();
+
+
+
+
+
+
+
+    
 // // ** MySQL settings - You can get this info from your web host ** //
 // /** The name of the database for WordPress */
 // define( 'DB_NAME', 'roejewel_dbjo' );

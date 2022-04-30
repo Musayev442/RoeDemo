@@ -19,11 +19,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        backgroundColor: Color(0xFFFFAFAFA),
-        primaryColor: Color(0xFFFFBD00),
-        accentColor: Color(0xFFFFEBC7),
+        backgroundColor: const Color(0xffffafafa),
+        primaryColor: const Color(0xFFFFBD00),
+        accentColor: const Color(0xFFFFEBC7),
       ),
-      home: SafeArea(child: Home()),
+      home: const SafeArea(child: Home()),
     );
   }
 }
