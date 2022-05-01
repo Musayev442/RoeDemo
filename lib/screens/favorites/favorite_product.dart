@@ -1,4 +1,4 @@
-import 'dart:convert';
+import 'dart:convert' as convert;
 
 import 'package:flutter/material.dart';
 
@@ -12,33 +12,34 @@ class FavoriteProducts extends StatefulWidget {
 }
 
 class _FavoriteProductsState extends State<FavoriteProducts> {
-  var response;
-  List<Data> dataObj = [];
-  List data = [];
-  Future getData() async {
-    var url = Uri.parse('https://roejewelry.com/flutter_connection/get.php');
-    response = await http.get(url);
-    data = jsonDecode(response.body);
-    dataObj = data.map((json) => Data.fromJson(json)).toList();
-    print(dataObj[5].postTitle);
-    print(dataObj.length);
-  }
+  //List<Data> dataObj = [];
 
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    getData();
+  Future<List<Data>> getData() async {
+    var url = Uri.parse('https://roejewelry.com/flutter_connection/get.php');
+    var response = await http.get(url);
+    var data = (convert.jsonDecode(response.body) as List);
+    var dataObj = data.map((json) => Data.fromJson(json)).toList();
+    print(dataObj.runtimeType);
+    return dataObj;
   }
 
   @override
   Widget build(BuildContext context) {
-    List title = [];
-    for (var item in dataObj) {
-      title.add(item.postTitle);
-    }
-    return ListView(
-      children: title.map((e) => Text(e.toString())).toList(),
+    return FutureBuilder(
+      future: getData(), // a previously-obtained Future<String> or null
+      builder: (BuildContext context, AsyncSnapshot<List<Data>> snapshot) {
+        if (snapshot.hasData) {
+          return ListView.builder(
+              itemCount: snapshot.data?.length,
+              itemBuilder: (BuildContext context, int index) {
+                return ListTile(
+                  title: Text(snapshot.data?[index].title),
+                  subtitle: Text(snapshot.data?[index].id),
+                );
+              });
+        }
+        return Center(child: CircularProgressIndicator());
+      },
     );
   }
 }

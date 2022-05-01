@@ -12,7 +12,22 @@
         echo json_encode($row);
    }
    
-   
+   $sql2="SELECT 
+   p.ID,
+   am.meta_value
+FROM
+   wp_posts p
+LEFT JOIN
+   wp_postmeta pm ON 
+       pm.post_id = p.ID AND
+       pm.meta_key = '_thumbnail_id'
+LEFT JOIN
+   wp_postmeta am ON
+       am.post_id = pm.meta_value AND
+       am.meta_key = '_wp_attached_file'
+WHERE
+   p.post_type = 'product' AND
+   p.post_status = 'publish'";
    
    function Query()
    {
