@@ -43,3 +43,25 @@ class _FavoriteProductsState extends State<FavoriteProducts> {
     );
   }
 }
+
+
+/*void main() {
+  List list = [];
+  list.add(Customer('Jack', 23));
+  list.add(Customer('Adam', 27));
+  list.add(Customer('Katherin', 25));
+
+  var map1 = Map.fromIterable(list, key: (e) => e.name, value: (e) => e.age);
+  print(map1);
+}
+
+class Customer {
+  String name;
+  int age;
+  Customer(this.name, this.age);
+  @override
+  String toString() {
+    return '{ ${this.name}, ${this.age} }';
+  }
+}
+ */
