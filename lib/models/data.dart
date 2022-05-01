@@ -5,4 +5,9 @@ class Data {
     id = json['ID'];
     title = json['post_title'];
   }
+  Data(this.id, this.title);
+  @override
+  String toString() {
+    return '{ $id, $title }';
+  }
 }

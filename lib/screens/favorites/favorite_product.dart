@@ -1,10 +1,9 @@
-import 'dart:convert' as convert;
-
+import 'package:firstapp/models/jewelry.dart';
 import 'package:flutter/material.dart';
 
-import 'package:http/http.dart' as http;
-import 'dart:async';
 import '../../models/data.dart';
+
+var url = Uri.parse('https://roejewelry.com/flutter_connection/get.php');
 
 class FavoriteProducts extends StatefulWidget {
   @override
@@ -12,21 +11,10 @@ class FavoriteProducts extends StatefulWidget {
 }
 
 class _FavoriteProductsState extends State<FavoriteProducts> {
-  //List<Data> dataObj = [];
-
-  Future<List<Data>> getData() async {
-    var url = Uri.parse('https://roejewelry.com/flutter_connection/get.php');
-    var response = await http.get(url);
-    var data = (convert.jsonDecode(response.body) as List);
-    var dataObj = data.map((json) => Data.fromJson(json)).toList();
-    print(dataObj.runtimeType);
-    return dataObj;
-  }
-
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      future: getData(), // a previously-obtained Future<String> or null
+      future: Jewelry.getData(),
       builder: (BuildContext context, AsyncSnapshot<List<Data>> snapshot) {
         if (snapshot.hasData) {
           return ListView.builder(
@@ -38,30 +26,8 @@ class _FavoriteProductsState extends State<FavoriteProducts> {
                 );
               });
         }
-        return Center(child: CircularProgressIndicator());
+        return const Center(child: CircularProgressIndicator());
       },
     );
   }
 }
-
-
-/*void main() {
-  List list = [];
-  list.add(Customer('Jack', 23));
-  list.add(Customer('Adam', 27));
-  list.add(Customer('Katherin', 25));
-
-  var map1 = Map.fromIterable(list, key: (e) => e.name, value: (e) => e.age);
-  print(map1);
-}
-
-class Customer {
-  String name;
-  int age;
-  Customer(this.name, this.age);
-  @override
-  String toString() {
-    return '{ ${this.name}, ${this.age} }';
-  }
-}
- */
