@@ -1,4 +1,4 @@
-import 'package:firstapp/models/jewelry.dart';
+import 'package:firstapp/models/product_service.dart';
 import 'package:flutter/material.dart';
 
 import '../../models/data.dart';
@@ -11,10 +11,20 @@ class FavoriteProducts extends StatefulWidget {
 }
 
 class _FavoriteProductsState extends State<FavoriteProducts> {
+  var jewelryData;
+  var productService = ProductService();
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    jewelryData = productService.getProduct();
+  }
+
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      future: Jewelry.getData(),
+      future: jewelryData,
       builder: (BuildContext context, AsyncSnapshot<List<Data>> snapshot) {
         if (snapshot.hasData) {
           return ListView.builder(
