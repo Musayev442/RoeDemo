@@ -15,14 +15,14 @@ class _ShopState extends State<Shop> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    products = new ProductService().getProduct();
+    products = ProductService().getProduct();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Category"),
+        title: const Text("Category"),
       ),
       body: FutureBuilder(
         future: products,
