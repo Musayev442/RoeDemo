@@ -1,5 +1,6 @@
 // ignore_for_file: deprecated_member_use
 
+import 'package:firstapp/screens/categories/shop.dart';
 import 'package:flutter/material.dart';
 
 class Categories extends StatelessWidget {
@@ -14,6 +15,12 @@ class Categories extends StatelessWidget {
         itemBuilder: (context, index) {
           return Container(
             child: ListTile(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Shop()),
+                );
+              },
               leading: const Icon(Icons.diamond),
               title: Text(categoryList[index]),
               trailing: const Icon(
