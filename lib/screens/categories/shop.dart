@@ -11,12 +11,13 @@ class Shop extends StatefulWidget {
 
 class _ShopState extends State<Shop> {
   var products;
-  var images;
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     products = ProductService().getProduct();
+    var pr = ProductService().getProductDetails();
+    print(pr);
   }
 
   @override
@@ -56,8 +57,8 @@ class _ShopState extends State<Shop> {
                   children: [
                     Container(
                       margin: EdgeInsets.all(10),
-                      width: 100,
-                      height: 100,
+                      width: 150,
+                      height: 150,
                       decoration: BoxDecoration(
                         border: Border.all(
                           width: 2.0,
@@ -99,11 +100,7 @@ class _ShopState extends State<Shop> {
                     children: [
                       Text(
                         snapshot.data[index].title,
-                        style:
-                            TextStyle(fontWeight: FontWeight.bold, height: 1.5),
-                      ),
-                      Text(
-                        snapshot.data[index].subtitle,
+                        overflow: TextOverflow.ellipsis,
                         textAlign: TextAlign.center,
                         style: TextStyle(height: 1.5),
                       ),
